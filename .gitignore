@@ -1,0 +1,20 @@
+# Generated local evidence, data and build artifacts
+apps/forgebench/reports/
+apps/forgeml/reports/
+apps/forgedatalab/report.json
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+coverage/
+.DS_Store
+apps/forgecloud/reports/
+
+# Temporary phase transfer bundle
+docs/*-transfer-*.zip

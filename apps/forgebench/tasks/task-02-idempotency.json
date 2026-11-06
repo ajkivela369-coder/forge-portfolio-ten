@@ -1,0 +1,8 @@
+{
+  "id": "task-02-idempotency",
+  "title": "Add persistent idempotency across retries",
+  "depends_on": ["task-01-rate-limiting"],
+  "brief": "Jobs created with an idempotency key must return the original result after a retry, reject a changed payload using the same key, remain isolated per client, and persist across restarts.",
+  "acceptance": ["replay without duplicate insertion", "409 conflict on changed payload", "client isolation", "SQLite persistence across restarts"],
+  "suite": "tests/engine.test.mjs"
+}

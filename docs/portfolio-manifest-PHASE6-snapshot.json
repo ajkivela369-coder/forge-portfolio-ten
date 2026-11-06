@@ -1,0 +1,459 @@
+{
+  "schema": "forge-studio-portfolio-ten-v1",
+  "created": "2026-11-05",
+  "visibility": "local_unpublished",
+  "overall_status": "7_tested_prototypes_3_planned",
+  "distinction": "Implemented does not mean published, deployed, professionally experienced, or independently audited",
+  "projects": [
+    {
+      "id": "forgebench",
+      "title": "ForgeBench SWE",
+      "target_languages": [
+        "TypeScript",
+        "JavaScript",
+        "SQL"
+      ],
+      "target_stacks": [
+        "Node.js",
+        "React",
+        "SQLite",
+        "Playwright"
+      ],
+      "implemented_languages": [
+        "TypeScript",
+        "JavaScript",
+        "SQL"
+      ],
+      "implemented_stacks": [
+        "Node.js",
+        "SQLite"
+      ],
+      "status": "tested_local_prototype",
+      "location": "apps/forgebench",
+      "verification": "51 Node tests discovered: 50 passed, 1 Windows symlink test skipped; 5 sequential task specs, structural patch inspection, red/green fixture, metadata adapters and fail-closed container plan. No official external benchmark, untrusted execution sandbox or UI.",
+      "priority": 1,
+      "implementation_notes": {
+        "framework_adapters": "SWE-bench metadata/prediction JSONL, HumanEval and MBPP read-only metadata",
+        "framework_execution": "none_official",
+        "red_green_fixture": "trusted_local_only",
+        "test_evidence": "apps/forgebench/reports/latest.json",
+        "features_not_implemented": [
+          "untrusted code sandbox",
+          "React UI",
+          "Playwright",
+          "official SWE-bench runner",
+          "Harbor adapter"
+        ],
+        "execution_policy": "fail_closed_planner_only; container runtime absent; no execution of untrusted submissions",
+        "patch_inspector": "tested local narrow unified diff validation; never applies/executes patch; not an official benchmark parser"
+      }
+    },
+    {
+      "id": "forgeml",
+      "title": "ForgeML",
+      "target_languages": [
+        "Python",
+        "SQL"
+      ],
+      "target_stacks": [
+        "PyTorch",
+        "FastAPI",
+        "PostgreSQL"
+      ],
+      "implemented_languages": [
+        "Python"
+      ],
+      "implemented_stacks": [],
+      "status": "tested_local_prototype",
+      "priority": 2,
+      "location": "apps/forgeml",
+      "verification": "9 pure-Python unit tests passed; deterministic pairwise logistic preference ranking and train/dev/test leakage guard on 10 synthetic comparisons. PyTorch not installed or used; no model promoted."
+    },
+    {
+      "id": "forgemesh",
+      "title": "ForgeMesh",
+      "target_languages": [
+        "Go"
+      ],
+      "target_stacks": [
+        "gRPC",
+        "Redis",
+        "Kafka",
+        "Docker"
+      ],
+      "implemented_languages": [
+        "Go",
+        "JavaScript"
+      ],
+      "implemented_stacks": [
+        "Go net/http standard library",
+        "Node.js HTTP"
+      ],
+      "status": "tested_local_prototype",
+      "priority": 3,
+      "location": "apps/forgemesh",
+      "verification": "Node on Windows: 17/17 unit/real-HTTP tests incl. 6 new stress/negative checks; prior separate Go 1.23.2 verified 7 top-level tests, 5 nested cases, vet, race detection and 8 live smoke checks; Go compiler remains absent on Windows.",
+      "implementation_notes": {
+        "go_compilation_environment": "separate Linux assistant testing environment, Go 1.23.2",
+        "tested_on_paired_workstation": "Node.js reference implementation and 11 HTTP tests",
+        "real_go_tests": "7 top-level Go tests; 5 nested subcases; vet and race detector passed",
+        "http_smoke": "8 Go loopback checks and 8 Node loopback checks",
+        "source_hashes": {
+          "go.mod": "5422dec74a0544748ab0ad2d38226f1fa20053121f6eb663b2da5f0164a8cfa9",
+          "internal/mesh/service.go": "a129ef7914a0ead17c4efb578d2723d6471c89e45ce7d05b4e09e0100f2ee5be",
+          "internal/mesh/service_test.go": "ed900649b913f3cf778a8aa2ec9f36bc8ce9a11d92cb0314d8f7f6cb980a407c",
+          "cmd/forgemesh/main.go": "3ff0a2f6d145467ddb64fbbb77818ee68a2187c2a670141d66e0e38aef9e75c4"
+        },
+        "missing_features": [
+          "gRPC",
+          "Kafka",
+          "Redis",
+          "Docker",
+          "durable storage",
+          "authentication",
+          "production deployment"
+        ],
+        "node_stress_tests": "6 new tests for concurrency, bounded capacity, multibyte limits, malformed JSON and idempotency; passed Windows Node 24"
+      }
+    },
+    {
+      "id": "forgecore",
+      "title": "ForgeCore",
+      "target_languages": [
+        "Rust",
+        "C",
+        "C++"
+      ],
+      "target_stacks": [
+        "WebAssembly"
+      ],
+      "implemented_languages": [
+        "C++"
+      ],
+      "implemented_stacks": [
+        "ISO C++20 standard library",
+        "GCC 14.2 Linux",
+        "Clang 17 Linux"
+      ],
+      "status": "tested_local_prototype",
+      "priority": 4,
+      "location": "apps/forgecore",
+      "verification": "C++20 deterministic DAG/resource-wave planning CLI and library; 19/19 authored unit tests pass under GCC 14.2 and Clang 17 in a separate Linux environment. GCC ASan/UBSan passed 19/19. 150-task stress and reversed-input determinism passed. Exact seven on-disk Windows files verified via SHA-256. No compiler installed on paired Windows laptop.",
+      "implementation_notes": {
+        "execution_scope": "dry_run_scheduler_does_not_execute_tasks",
+        "source_files_sha256": {
+          "include/forgecore.hpp": "d307378cfda908999656a7fe6d7a217f4e91593b2000023107bec2c412b7bf2c",
+          "src/forgecore.cpp": "9f0b8c025c6eee95f6f286c817287cb7be08723abffaf7be1b750833ea2d6364",
+          "src/main.cpp": "800445137945c8c9c0e7abc463e162f7e2aaa0ec7cff592a6e5f3f946ad9f4d3",
+          "tests/test_core.cpp": "0d5077a20ce34fabf27f43c9c0bb1662c122109d023002ced21313eea087c29b"
+        },
+        "verified_compilers": [
+          "GCC 14.2 linux/amd64",
+          "Clang 17 linux/amd64"
+        ],
+        "gcc_address_undefined_sanitizers": "19 passing tests",
+        "workload_stress": "150 task DAG (33 waves), stable result after shuffled input, no out-of-budget waves",
+        "windows_compiler_available": false,
+        "planned_not_implemented": [
+          "Rust",
+          "C",
+          "WebAssembly",
+          "actual distributed job execution",
+          "authenticated API"
+        ]
+      }
+    },
+    {
+      "id": "forgeenterprise",
+      "title": "ForgeEnterprise",
+      "target_languages": [
+        "Java",
+        "TypeScript"
+      ],
+      "target_stacks": [
+        "Spring Boot",
+        "Angular",
+        "PostgreSQL"
+      ],
+      "implemented_languages": [],
+      "implemented_stacks": [],
+      "status": "planned",
+      "priority": 5
+    },
+    {
+      "id": "forgecloud",
+      "title": "ForgeCloud",
+      "target_languages": [
+        "C#",
+        "HCL",
+        "Bash"
+      ],
+      "target_stacks": [
+        "ASP.NET Core",
+        "Blazor",
+        "Terraform",
+        "Kubernetes"
+      ],
+      "implemented_languages": [
+        "Python"
+      ],
+      "implemented_stacks": [],
+      "status": "tested_local_prototype",
+      "priority": 6,
+      "location": "apps/forgecloud",
+      "verification": "12 local Python unit tests passed; deterministic release and rollback planner; artifact digest, dependency, memory, cost and exposure validation; only synthetic dry-run manifests, zero deployments."
+    },
+    {
+      "id": "forgemobile",
+      "title": "ForgeMobile",
+      "target_languages": [
+        "Kotlin",
+        "Swift",
+        "Dart"
+      ],
+      "target_stacks": [
+        "Android",
+        "iOS",
+        "Flutter"
+      ],
+      "implemented_languages": [],
+      "implemented_stacks": [],
+      "status": "planned",
+      "priority": 7
+    },
+    {
+      "id": "forgecommerce",
+      "title": "ForgeCommerce",
+      "target_languages": [
+        "PHP",
+        "TypeScript",
+        "SQL"
+      ],
+      "target_stacks": [
+        "Laravel",
+        "Vue",
+        "MySQL"
+      ],
+      "implemented_languages": [
+        "PHP"
+      ],
+      "implemented_stacks": [
+        "PHP 8.4 CLI / built-in HTTP server",
+        "JSON file store with flock"
+      ],
+      "status": "tested_local_prototype",
+      "priority": 8,
+      "location": "apps/forgecommerce",
+      "verification": "Exact PHP source files copied to paired Windows laptop (9/9 SHA-256 verified); PHP 8.4.24 independent environment: 17/17 business-logic tests, 12/12 real loopback HTTP smoke checks, 1/1 multiprocess no-oversell test passed. Windows PHP launch through GFC still requires explicit executable approval; no native SQLite, Laravel, Vue or MySQL yet.",
+      "implementation_notes": {
+        "source_sha256": {
+          "src/Store.php": "a11f4255d11578629cc2450005d26449ea1e97b79f8b7763558ec4b9eaff3d0f",
+          "public/router.php": "5d7e435484190586a55a10aea347dc47625251210c4feb9e0f3bb4db6ada5682",
+          "tests/run.php": "08b5c9308300bf288f4dcdf51973b5894caba494bda5a3722de555662012c1d4",
+          "tests/concurrency.php": "6b31e42e9f87af18be38512417bf8dd5ad1167a46b4f35f0d1dd5057471a38d8"
+        },
+        "data_scope": "synthetic_demo_only",
+        "execution_environment": "independent_php_8_4_24_not_windows",
+        "windows_executable_approval": "pending_or_expired_not_bypassed",
+        "persistence": "JSON state file, flock and replace; not SQLite, not power-loss durable",
+        "not_implemented": [
+          "SQLite",
+          "MySQL",
+          "Laravel",
+          "Vue",
+          "payment integration",
+          "production authentication",
+          "public deployment"
+        ]
+      }
+    },
+    {
+      "id": "forgeconnect",
+      "title": "ForgeConnect",
+      "target_languages": [
+        "Ruby",
+        "TypeScript"
+      ],
+      "target_stacks": [
+        "Rails",
+        "GraphQL",
+        "WebSockets"
+      ],
+      "implemented_languages": [],
+      "implemented_stacks": [],
+      "status": "planned",
+      "priority": 9
+    },
+    {
+      "id": "forgedatalab",
+      "title": "ForgeDataLab",
+      "target_languages": [
+        "Python",
+        "R",
+        "SQL",
+        "C++",
+        "Bash"
+      ],
+      "target_stacks": [
+        "SQLite",
+        "DuckDB"
+      ],
+      "implemented_languages": [
+        "Python",
+        "SQL"
+      ],
+      "implemented_stacks": [
+        "SQLite"
+      ],
+      "status": "tested_local_prototype",
+      "location": "apps/forgedatalab",
+      "verification": "7 unit tests passed; six synthetic CSV telemetry rows analyzed in SQLite; p95 and reproducibility checks.",
+      "priority": 10
+    }
+  ],
+  "phase_2": {
+    "date_local": "2026-11-05",
+    "updated_by": "Forge Studio implementation pass",
+    "projects_with_tested_local_prototypes": 3,
+    "projects_remaining_planned": 7,
+    "tests_passing": {
+      "forgebench": 33,
+      "forgeml": 9,
+      "forgedatalab": 7,
+      "total": 49
+    },
+    "official_external_benchmark_runs": 0,
+    "verified_external_publications": 0,
+    "git_commit_status": "uncommitted",
+    "network_deployment_status": "none",
+    "cost_external_services": "none"
+  },
+  "phase_3": {
+    "date_local": "2026-11-05",
+    "projects_with_tested_local_prototypes": 4,
+    "projects_remaining_planned": 6,
+    "tests_passing": {
+      "forgebench": 40,
+      "forgeml": 9,
+      "forgedatalab": 7,
+      "forgecloud": 12,
+      "total": 68
+    },
+    "tests_skipped": {
+      "forgebench": 1,
+      "total": 1
+    },
+    "official_external_benchmark_runs": 0,
+    "container_runtime_available": false,
+    "untrusted_candidate_execution_enabled": false,
+    "verified_external_publications": 0,
+    "git_commit_status": "uncommitted",
+    "network_deployment_status": "none",
+    "cost_external_services": "none"
+  },
+  "phase_4": {
+    "date_local": "2026-11-05",
+    "projects_with_tested_prototypes": 5,
+    "projects_remaining_planned": 5,
+    "tests_passing": {
+      "forgebench": 40,
+      "forgeml": 9,
+      "forgedatalab": 7,
+      "forgecloud": 12,
+      "forgemesh_node": 11,
+      "forgemesh_go_top_level": 7,
+      "total": 86
+    },
+    "tests_skipped": {
+      "forgebench": 1,
+      "total": 1
+    },
+    "go_nested_subtests_passing": 5,
+    "live_loopback_smoke_checks": {
+      "node_on_windows": 8,
+      "go_on_separate_linux": 8
+    },
+    "go_compiler_on_windows": false,
+    "go_compiler_in_independent_test_environment": "go1.23.2 linux/amd64",
+    "git_commit_status": "uncommitted",
+    "git_remote_configured": false,
+    "github_actions_executed": false,
+    "public_publication": false,
+    "production_deployment": false,
+    "external_paid_services_used": false
+  },
+  "phase_5": {
+    "date_local": "2026-11-06",
+    "projects_with_tested_prototypes": 6,
+    "projects_remaining_planned": 4,
+    "passing_top_level_tests": {
+      "forgebench_node": 50,
+      "forgeml_python": 9,
+      "forgedatalab_python": 7,
+      "forgecloud_python": 12,
+      "forgemesh_node": 17,
+      "forgemesh_go": 7,
+      "forgecommerce_php": 17,
+      "total": 119
+    },
+    "tests_skipped": {
+      "forgebench_windows_symlink": 1,
+      "total": 1
+    },
+    "supplemental_checks": {
+      "forgemesh_go_subtests": 5,
+      "forgecommerce_live_php_http": 12,
+      "forgecommerce_multiprocess_stock_test": 1
+    },
+    "php_source_files_verified_by_sha256": 9,
+    "php_run_on_paired_windows": false,
+    "php_execution_approval_required": true,
+    "php_tested_separately": "php_8.4.24_linux",
+    "no_sqlite_in_php_prototype": true,
+    "php_live_server_terminated": true,
+    "official_external_benchmark_runs": 0,
+    "git_commit_status": "uncommitted",
+    "remote_configured": false,
+    "github_actions_executed": false,
+    "external_paid_services_used": false,
+    "public_deployment": false
+  },
+  "phase_6": {
+    "date_local": "2026-11-06",
+    "projects_with_tested_prototypes": 7,
+    "projects_remaining_planned": 3,
+    "passing_top_level_tests": {
+      "forgebench_node": 50,
+      "forgeml_python": 9,
+      "forgedatalab_python": 7,
+      "forgecloud_python": 12,
+      "forgemesh_node": 17,
+      "forgemesh_go": 7,
+      "forgecommerce_php": 17,
+      "total": 138,
+      "forgecore_cpp": 19
+    },
+    "tests_skipped": {
+      "forgebench_windows_symlink": 1,
+      "total": 1
+    },
+    "new_independent_checks": [
+      "GCC 14.2 19/19",
+      "Clang 17 19/19",
+      "GCC ASan+UBSan 19/19",
+      "150-task generated workload PASS",
+      "150-task reversed input determinism PASS"
+    ],
+    "windows_php_approval": "not_granted",
+    "php_windows_sqlite_dlls_present": true,
+    "php_sqlite_driver_loaded_verified": false,
+    "php_sqlite_adapter_tested": false,
+    "gcc_or_clang_installed_on_windows": false,
+    "source_checksums_verified_on_windows": 7,
+    "git_commit_status": "uncommitted",
+    "remote_configured": false,
+    "github_actions_executed": false,
+    "public_deployment": false,
+    "external_paid_services_used": false
+  }
+}

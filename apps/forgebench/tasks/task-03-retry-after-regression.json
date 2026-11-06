@@ -1,0 +1,9 @@
+{
+  "id": "task-03-retry-after-regression",
+  "title": "Repair retry-after calculation and prevent boundary regression",
+  "depends_on": ["task-02-idempotency"],
+  "brief": "A backend rate limiter incorrectly computes Retry-After when a request is blocked. Fix elapsed time arithmetic while preserving quota semantics, supporting unordered observations, and excluding events precisely at the window boundary. Validate input values.",
+  "acceptance": ["failing starter tests", "passing reviewed fix", "boundary regression is detected", "output reports include test and candidate hashes"],
+  "suite": "tests/red-green.test.mjs",
+  "evidence_classification": "authored_public_demo_not_sealed"
+}

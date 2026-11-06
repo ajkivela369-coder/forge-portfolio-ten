@@ -1,0 +1,9 @@
+{
+  "id": "task-05-structural-diff-review",
+  "title": "Inspect candidate patches without applying or executing them",
+  "depends_on": ["task-04-sandbox-gate"],
+  "brief": "Implement fail-closed metadata validation for a deliberately narrow subset of unified Git diffs, rejecting unsafe paths, duplicate files, binary patches, symlinks and invalid hunk counts before any future sandboxed evaluation.",
+  "acceptance": ["path scope restrictions", "change budget limits", "hunk count validation", "no code execution claims"],
+  "suite": "tests/patch-inspector.test.mjs",
+  "evidence_classification": "local_structural_inspection_not_secure_application"
+}

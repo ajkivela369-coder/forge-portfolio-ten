@@ -1,0 +1,8 @@
+{
+  "id": "task-01-rate-limiting",
+  "title": "Implement per-client request throttling",
+  "depends_on": [],
+  "brief": "Extend an existing jobs API to apply a per-client sliding-window limit. Return HTTP 429 with Retry-After, isolate clients, and allow requests when the window expires. Keep health checks available.",
+  "acceptance": ["per-client quotas", "Retry-After header", "window expiration", "health-route exemption"],
+  "suite": "tests/engine.test.mjs"
+}

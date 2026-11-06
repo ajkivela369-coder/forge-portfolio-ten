@@ -1,0 +1,178 @@
+name: Forge Studio Portfolio Checks
+on:
+  push:
+  pull_request:
+jobs:
+  forgebench:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Bench API, adapters, graph and red/green suite
+        working-directory: apps/forgebench
+        run: |
+          npm test
+          npm run bench
+          npm run redgreen
+          npm run adapters
+          npm run trajectory
+  forgeml:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Deterministic pairwise baseline verification
+        working-directory: apps/forgeml
+        run: |
+          python -m unittest discover -s tests -v
+          python src/pairwise_baseline.py fixtures/synthetic_preferences.json reports/baseline.json
+  forgedatalab:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Data validation and analytics verification
+        working-directory: apps/forgedatalab
+        run: |
+          python -m unittest discover -s tests -v
+          python src/pipeline.py fixtures/synthetic_benchmark_telemetry.csv report.json
+  forgecloud:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Release policy and rollback plan tests
+        working-directory: apps/forgecloud
+        run: |
+          python -m unittest discover -s tests -v
+          python src/release_planner.py fixtures/synthetic-preview-manifest.json reports/plan.json
+  forgemesh-node:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: HTTP contract and client-scoped events
+        working-directory: apps/forgemesh
+        run: npm test
+  forgemesh-go:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: apps/forgemesh/go.mod
+      - name: Go standard library tests and race detector
+        working-directory: apps/forgemesh
+        run: |
+          go vet ./...
+          go test -race -count=1 ./...
+  forgecommerce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+      - name: Validate PHP source and run business-logic tests
+        working-directory: apps/forgecommerce
+        run: |
+          php -l src/Store.php
+          php -l public/router.php
+          php tests/run.php
+      - name: Test multi-process stock reservation (Linux pcntl)
+        working-directory: apps/forgecommerce
+        run: php tests/concurrency.php
+      - name: Live loopback HTTP contract checks
+        working-directory: apps/forgecommerce
+        shell: bash
+        run: |
+          state_dir="$(mktemp -d)"
+          FORGECOMMERCE_STATE="$state_dir/state.json" php -S 127.0.0.1:4937 public/router.php >/tmp/forgecommerce-php.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true; rm -rf "$state_dir"' EXIT
+          for i in $(seq 1 30); do
+            curl -fsS http://127.0.0.1:4937/health >/dev/null 2>&1 && break
+            sleep 0.1
+          done
+          python tools/http_smoke.py http://127.0.0.1:4937
+  forgecore-cpp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile GCC and run deterministic C++20 tests
+        working-directory: apps/forgecore
+        shell: bash
+        run: |
+          mkdir -p build
+          g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -Iinclude src/forgecore.cpp tests/test_core.cpp -o build/core-tests-gcc
+          ./build/core-tests-gcc
+          g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -Iinclude src/forgecore.cpp src/main.cpp -o build/forgecore
+          ./build/forgecore fixtures/production-like-demo.tsv 2 256 | python3 -c 'import json,sys;d=json.load(sys.stdin);assert d["executed"] is False and d["task_count"]==5 and d["makespan_ms"]==240'
+      - name: Verify Clang-compatible C++20
+        working-directory: apps/forgecore
+        shell: bash
+        run: |
+          clang++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -Iinclude src/forgecore.cpp tests/test_core.cpp -o build/core-tests-clang
+          ./build/core-tests-clang
+
+  forgeenterprise-java:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Java workflow tests
+        working-directory: apps/forgeenterprise
+        run: |
+          mkdir -p build
+          javac -Xlint:all -d build src/*.java tests/WorkflowTest.java
+          java -cp build forgeenterprise.WorkflowTest
+  forgemobile-kotlin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: fwcd/kotlin-setup@v1
+      - name: Kotlin offline synchronization tests
+        working-directory: apps/forgemobile
+        run: |
+          mkdir -p build
+          kotlinc src/*.kt tests/*.kt -include-runtime -d build/forgemobile.jar
+          java -cp build/forgemobile.jar forgemobile.OfflineSyncTestKt
+  forgeconnect-ruby:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+      - name: Ruby signed event delivery tests
+        working-directory: apps/forgeconnect
+        run: ruby -Ilib test/connect_test.rb
+  portfolio-site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Ten-page showcase integrity
+        run: |
+          python tools/build_showcase.py
+          python -m unittest discover -s tools -p 'test_*.py' -v

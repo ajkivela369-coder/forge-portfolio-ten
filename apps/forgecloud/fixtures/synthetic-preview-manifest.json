@@ -1,0 +1,23 @@
+{
+  "schema": "forgecloud-release-v1",
+  "environment": "preview",
+  "estimated_monthly_external_cost_usd": 0,
+  "services": [
+    {
+      "name": "api-service",
+      "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "rollback_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "depends_on": ["data-service"],
+      "exposure": "loopback",
+      "memory_mb": 128
+    },
+    {
+      "name": "data-service",
+      "artifact_digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "rollback_digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "depends_on": [],
+      "exposure": "private",
+      "memory_mb": 256
+    }
+  ]
+}

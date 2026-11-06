@@ -1,0 +1,26 @@
+{
+  "schema": "forgemesh-http-contract-v1",
+  "service": "ForgeMesh",
+  "scope": "loopback_only_no_auth",
+  "routes": [
+    {"method": "GET", "path": "/health", "success": 200},
+    {"method": "POST", "path": "/v1/events", "success": 201, "replay": 200, "conflict": 409},
+    {"method": "GET", "path": "/v1/events?topic=build-ready", "success": 200}
+  ],
+  "required_headers": ["x-client-id", "idempotency-key"],
+  "max_payload_bytes": 1024,
+  "max_request_bytes": 65536,
+  "rejected_requests": [
+    {"scenario": "missing_client", "status": 401},
+    {"scenario": "missing_key", "status": 428},
+    {"scenario": "unknown_fields", "status": 400},
+    {"scenario": "invalid_topic", "status": 422},
+    {"scenario": "body_too_large", "status": 413},
+    {"scenario": "capacity_exceeded", "status": 503}
+  ],
+  "notes": [
+    "This contract is tested with Node implementation, not yet with Go.",
+    "Client header is not authentication. Neither service is safe for public deployment.",
+    "Transport and state are in-memory. gRPC, Kafka, Redis and distributed retries are not implemented."
+  ]
+}

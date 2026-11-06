@@ -1,0 +1,12 @@
+{
+  "name": "@forge-studio/forgemesh",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {"node": ">=24"},
+  "scripts": {
+    "test": "node --test",
+    "serve:node": "node reference/service.mjs",
+    "test:go": "go test ./..."
+  }
+}

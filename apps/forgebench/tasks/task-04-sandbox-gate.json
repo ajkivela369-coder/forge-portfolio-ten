@@ -1,0 +1,9 @@
+{
+  "id": "task-04-sandbox-gate",
+  "title": "Implement a fail-closed execution admission policy",
+  "depends_on": ["task-03-retry-after-regression"],
+  "brief": "Prevent evaluation of arbitrary submitted code when no reviewed container runtime is installed. Validate pinned container images and safe execution-plan constraints. Reject symlinks, traversal, and changed known fixture hashes.",
+  "acceptance": ["no runtime blocks untrusted submissions", "image pinning and fixed entrypoint", "no host network or mounts", "known fixture hash validation", "no claim of live sandbox"],
+  "suite": "tests/sandbox-policy.test.mjs",
+  "evidence_classification": "tested_policy_planner_not_a_sandbox"
+}
