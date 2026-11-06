@@ -1,0 +1,5 @@
+build/
+reports/
+*.o
+*.obj
+*.exe

@@ -1,0 +1,6 @@
+# Synthetic tasks only. Format: id|duration_ms|memory_mib|depends_on (comma IDs or -)
+verify-model|120|128|fetch-input
+publish-report|40|64|verify-model,index-metadata
+fetch-input|80|96|-
+index-metadata|50|128|fetch-input
+load-config|25|32|-

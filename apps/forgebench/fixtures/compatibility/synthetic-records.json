@@ -1,0 +1,28 @@
+{
+  "swe_instance": {
+    "instance_id": "forge-studio__fictional-api-01",
+    "repo": "forge-studio/fictional-api",
+    "base_commit": "0000000000000000000000000000000000000000",
+    "problem_statement": "A fictional local request handler incorrectly calculates response headers.",
+    "patch": "FICTIONAL_GOLD_NOT_FOR_PUBLIC_METADATA",
+    "test_patch": "FICTIONAL_TEST_PATCH_NOT_FOR_PUBLIC_METADATA"
+  },
+  "swe_prediction": {
+    "instance_id": "forge-studio__fictional-api-01",
+    "model_name_or_path": "forge-studio-synthetic-only",
+    "model_patch": "diff --git a/handler.js b/handler.js\n--- a/handler.js\n+++ b/handler.js\n@@ -1 +1 @@\n-return {status: 500};\n+return {status: 200};"
+  },
+  "humaneval": {
+    "task_id": "HumanEval/fictional-0",
+    "prompt": "def double(x):\n    pass",
+    "entry_point": "double",
+    "canonical_solution": "FICTIONAL_REFERENCE",
+    "test": "def check(fn):\n    assert fn(2) == 4"
+  },
+  "mbpp": {
+    "task_id": 900001,
+    "text": "Return the number doubled. Fictional sample unrelated to official MBPP tasks.",
+    "test_list": ["assert twice(2) == 4", "assert twice(-1) == -2"],
+    "code": "FICTIONAL_REFERENCE"
+  }
+}

@@ -1,0 +1,5 @@
+[
+  {"sku":"BOOK-01","title":"Forge Notebook","unit_price_cents":1299,"stock":5},
+  {"sku":"PIN-02","title":"Emerald Dragon Pin","unit_price_cents":799,"stock":3},
+  {"sku":"CARD-03","title":"Forge Reference Cards","unit_price_cents":499,"stock":20}
+]

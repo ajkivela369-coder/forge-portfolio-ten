@@ -1,0 +1,18 @@
+{
+  "name": "@forge-studio/forgebench-swe",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --test",
+    "bench": "node src/cli.mjs score",
+    "tasks": "node src/cli.mjs tasks",
+    "serve": "node src/server.mjs",
+    "redgreen": "node src/local-redgreen.mjs",
+    "adapters": "node src/adapter-demo.mjs",
+    "trajectory": "node src/trajectory-demo.mjs"
+  }
+}
