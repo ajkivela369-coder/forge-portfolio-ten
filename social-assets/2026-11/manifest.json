@@ -1,0 +1,148 @@
+{
+  "campaign": "Forge Studio 2026-11 original creative",
+  "source": "C:/Users/user/Forge/apps/ForgeSocial",
+  "published_posts": 0,
+  "media_files": 28,
+  "files": [
+    {
+      "name": "Forge-Studio-Golden-Original.png",
+      "sha256": "d5391ba443fcdd3665dacf8d16f8592cb738fe004220f4c816bc5857abb35a5e",
+      "bytes": 2110640
+    },
+    {
+      "name": "ForgeStudio_30_Day_Posting_Calendar.csv",
+      "sha256": "a59374d74df8b6068451a9ab34efa69449bafc01fe5a8d3bf261be660a44c180",
+      "bytes": 16636
+    },
+    {
+      "name": "media/FS_01_Instagram.jpg",
+      "sha256": "de870197501a30eeb72688a2d02f487674deb229de2369ee7928923173257a4c",
+      "bytes": 207426
+    },
+    {
+      "name": "media/FS_02_Instagram.jpg",
+      "sha256": "a26e4ddff0e4be77cd4853ed02443fbe2058c1d1f7acbe4f4b2e3ac69e2dce93",
+      "bytes": 197783
+    },
+    {
+      "name": "media/FS_03_Instagram.jpg",
+      "sha256": "dd93b8cf98272ef647a66f24e3789273cfa2c11bbc60341bd85c84d9b95d227c",
+      "bytes": 205968
+    },
+    {
+      "name": "media/FS_04_Instagram.jpg",
+      "sha256": "30b9ddb309105eac792b75e9b62c5e209671300c1755b78fb00ae03bdd20a9b3",
+      "bytes": 206797
+    },
+    {
+      "name": "media/FS_04_TikTok.jpg",
+      "sha256": "d446b86919f5491b67b48616a42a3e354dd600ba70001545d1b54e40375b7334",
+      "bytes": 266055
+    },
+    {
+      "name": "media/FS_05_Instagram.jpg",
+      "sha256": "3d30311ec87c37ffa3ad27bcfba3b8b9ae6edd85f4cf421d4f702e608838a427",
+      "bytes": 196510
+    },
+    {
+      "name": "media/FS_05_TikTok.jpg",
+      "sha256": "3e215b4f28f1828ffe851af80ab267a8a9e0f88a1bf5acf0298919aec24d88e3",
+      "bytes": 255276
+    },
+    {
+      "name": "media/FS_06_Instagram.jpg",
+      "sha256": "d01835b8f5638dfa2dbceec0e02638dd0497a8ec8c57623962c7a74059a40eb9",
+      "bytes": 197546
+    },
+    {
+      "name": "media/FS_07_Instagram.jpg",
+      "sha256": "26c326142cdd5fa161f3341c03ef3d6d9bcbde4978a0c476eed3c43cce2ef810",
+      "bytes": 199069
+    },
+    {
+      "name": "media/FS_07_TikTok.jpg",
+      "sha256": "b1ef74c68185b23583d2b697a8f522bf0d92a81d85a22f8abd722cd43c52eb19",
+      "bytes": 257960
+    },
+    {
+      "name": "media/FS_08_Instagram.jpg",
+      "sha256": "29cc49c0bb58441c482603eb38b29c80a00bfec0c43041bd86095fe04b383f56",
+      "bytes": 202520
+    },
+    {
+      "name": "media/FS_08_TikTok.jpg",
+      "sha256": "62417e62f769b043282c48c750d7845bd5dc98612aad1282cfa24cf590df5050",
+      "bytes": 261765
+    },
+    {
+      "name": "media/FS_09_Instagram.jpg",
+      "sha256": "5933c9c329fd9624ab24918d43dbc416e481f63099bbda6ec6731d2682f29a8b",
+      "bytes": 202334
+    },
+    {
+      "name": "media/FS_10_Instagram.jpg",
+      "sha256": "8036f64fa2617a781eb07a09fb236c637747ee162c2de6bf99a91ce1caafaf1f",
+      "bytes": 204850
+    },
+    {
+      "name": "media/FS_10_TikTok.jpg",
+      "sha256": "e30e6acfe659072142a3277d3e3978b6c1cbe245dd144a221bcaf6742d6ed230",
+      "bytes": 264373
+    },
+    {
+      "name": "media/FS_11_Instagram.jpg",
+      "sha256": "43d9249f8c8c4fdc32e3e34da5e569766b48094b028ac5059494127e95469e4c",
+      "bytes": 202010
+    },
+    {
+      "name": "media/FS_11_TikTok.jpg",
+      "sha256": "eed28e5afce251ee82e06da9be153442ecf3da1ebf9805332f056fd466b68231",
+      "bytes": 261330
+    },
+    {
+      "name": "media/FS_12_Instagram.jpg",
+      "sha256": "16ebc7d1d5a847905df76f59c616d20eb9cae2d7e74d64a67dc802fa0863aa29",
+      "bytes": 203421
+    },
+    {
+      "name": "media/FS_13_Instagram.jpg",
+      "sha256": "cfed7ed4c09133b335ac34879a4e0c0f155e497a7486cc610a2d26c7f9ae17ba",
+      "bytes": 203864
+    },
+    {
+      "name": "media/FS_13_TikTok.jpg",
+      "sha256": "75356dc24a1308e957e28be9b59934fececf080ec1e02ea6700f353c3cfd2773",
+      "bytes": 263198
+    },
+    {
+      "name": "media/FS_14_TikTok.jpg",
+      "sha256": "83abacd133a6f2304b9ef32daabecaf6bfefbd86397733551b26122a54e46639",
+      "bytes": 259492
+    },
+    {
+      "name": "media/FS_15_TikTok.jpg",
+      "sha256": "b34c7b3e30f6f64e564f0aad417fedfd201b495cde2796a6a38a50e70cbc672e",
+      "bytes": 259504
+    },
+    {
+      "name": "videos/FS_Short_01.mp4",
+      "sha256": "8776c39640fe33f80637349a4945c25b0ca907b2e6cd9c08efcaa41d36108716",
+      "bytes": 594203
+    },
+    {
+      "name": "videos/FS_Short_02.mp4",
+      "sha256": "29b04744bd2003e1f59eec093913be1c42026fb6c5a70be2cff259b859ff168f",
+      "bytes": 602249
+    },
+    {
+      "name": "videos/FS_Short_03.mp4",
+      "sha256": "edc93a3b18bc670c0c656892e0fd4672f2937ce2bc1411ff6f5d7ea033d3e306",
+      "bytes": 581051
+    },
+    {
+      "name": "videos/FS_Short_04.mp4",
+      "sha256": "3cda20c2cc1d28221237b3880868e8dda46ab888fc0f681a58039685daa004d2",
+      "bytes": 608257
+    }
+  ]
+}
